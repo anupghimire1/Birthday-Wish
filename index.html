@@ -53,7 +53,7 @@ body{
 .cake.right{right:20px}
 @keyframes bounce{50%{transform:translateY(-10px)}}
 
-/* CARD */
+/* MAIN CARD */
 .container{
     position:absolute;
     top:50%;
@@ -125,6 +125,7 @@ button{
 }
 </style>
 </head>
+
 <body>
 
 <!-- Decorations -->
@@ -148,10 +149,11 @@ button{
 
 <div class="box active" id="q0">
 <h1>Hi Diya 💖</h1>
-<p>Answer each question to unlock a special wish 🎁</p>
+<p>Answer each question to unlock a special wish in your special day, this is my small wishes for you,take it positively hai kanchu, Though I am not together in your special day due to my study, I wish to be with you but what to do no other option,Sorry for that kanchu 🎁</p>
 <button onclick="next(0)">Start ✨</button>
 </div>
 
+<!-- QUESTIONS -->
 <div class="box" id="q1">
 <h2>Question 1</h2>
 <p>What is your name?</p>
@@ -163,7 +165,7 @@ button{
 <h2>Question 2</h2>
 <p>Which month is your birthday?</p>
 <input id="a2"><p class="error" id="e2"></p>
-<button onclick="check(2,'august')">Submit</button>
+<button onclick="check(2,'january')">Submit</button>
 </div>
 
 <div class="box" id="q3">
@@ -222,26 +224,48 @@ button{
 <button onclick="check(10,'diya')">Submit</button>
 </div>
 
+<!-- LAST QUESTION -->
+<div class="box" id="q11">
+<h2>Last Question 💭</h2>
+<p>I miss you… do you miss me?</p>
+<input id="a11"><p class="error" id="e11"></p>
+<button onclick="check(11,'yes')">Submit</button>
+</div>
+
+<!-- FINAL MESSAGE -->
+<div class="box" id="q12">
+<h1>💖 Thank You Diya 💖</h1>
+<p style="font-size:22px">
+Thank you kanchu ❤️<br><br>
+For answering everything,<br>
+For being patient,<br>
+For being YOU.<br><br>
+I miss you and I love you endlessly 💕
+</p>
+<button onclick="alert('💖 Happy Birthday Diya 💖')">🎉 The End 🎉</button>
+</div>
+
 </div>
 
 <script>
 let wishes=[
-"💖 You make every moment beautiful 💖",
-"🌸 Your smile lights up the world 🌸",
+"💖 You make every moment beautiful kanxu, Always be like this 💖",
+"🌸 Your smile lights up the world,and you are my sunshine 🌸",
 "✨ You deserve endless happiness ✨",
-"💗 You are truly special 💗",
+"💗 You are truly special for me and keep loving like this to me forever 💗",
 "🌟 Never stop shining 🌟",
-"🎀 You make life brighter 🎀",
-"🌈 Your kindness is magical 🌈",
-"🎁 Your dreams matter 🎁",
-"🎈 You are deeply loved 🎈",
-"🎂 Happy Birthday Diya 🎂"
+"🎀 You make life brighter of mine and yours 🎀",
+"🌈 Your kindness is magical and i love it most 🌈",
+"🎁 Your dreams matter to me 🎁",
+"🎈 You are deeply loved by your sanea🎈",
+"🎂 Happy Birthday Diya. I am truly proud of your everything and I wish your good health,sucess and want to see you as an independent women. Ani Hope to see you visa grant of AUSTRALIA soon. I love you the most 🎂",
+"💞 Thank you kanchu, I love you 💞"
 ];
 
 let colors=[
 "#ff758c","#ff9a9e","#fbc2eb","#a18cd1",
 "#f6d365","#84fab0","#8fd3f4","#fccb90",
-"#f093fb","#ff6a88"
+"#f093fb","#ff6a88","#ff4d6d"
 ];
 
 let current=0;
@@ -252,8 +276,8 @@ function next(n){
 }
 
 function check(n,ans){
-    let val=document.getElementById("a"+n).value.toLowerCase().trim();
-    if(val===ans){
+    let v=document.getElementById("a"+n).value.toLowerCase().trim();
+    if(v===ans){
         showWish(n);
     }else{
         document.getElementById("e"+n).innerText="❌ Incorrect, try again!";
@@ -269,7 +293,12 @@ function showWish(n){
 
 function closeWish(){
     document.getElementById("wishScreen").style.display="none";
-    next(current);
+    if(current===11){
+        document.getElementById("q11").classList.remove("active");
+        document.getElementById("q12").classList.add("active");
+    }else{
+        next(current);
+    }
 }
 </script>
 
